@@ -13,6 +13,8 @@ PyPi Page: https://pypi.org/project/pyerualjetwork/
 
 GitHub Page: https://github.com/HCB06/PyerualJetwork
 
+YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7HbsBpCx2VTJ4SK9wcPyse-EHw
+
 	pip install pyerualjetwork
  
 	'use this if your data small or memory management is a problem :'
