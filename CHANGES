@@ -1,3 +1,7 @@
+--- UPDATE 4.3.8 (PyerualJetwork) ---
+* All library architecture reconfigured.
+* Some visual implementations DISABLED in visualizations module.
+
 --- UPDATE 4.3.7 (PyerualJetwork) ---
 * memory parameter of learner function fixed
 
