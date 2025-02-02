@@ -1,5 +1,5 @@
 --- UPDATE 4.3.9 (PyerualJetwork) ---
-* New module: fitness_functions.
+* New module: fitness_functions. Example usage: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/ExampleCodes/MBA(plan).py
 
 --- UPDATE 4.3.8 (PyerualJetwork) ---
 * All library architecture reconfigured.
