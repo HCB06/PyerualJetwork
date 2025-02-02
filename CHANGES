@@ -1,3 +1,6 @@
+--- UPDATE 4.3.9 (PyerualJetwork) ---
+* New module: fitness_functions.
+
 --- UPDATE 4.3.8 (PyerualJetwork) ---
 * All library architecture reconfigured.
 * Some visual implementations DISABLED in visualizations module.
