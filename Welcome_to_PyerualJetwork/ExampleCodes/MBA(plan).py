@@ -34,9 +34,8 @@ scaler_params, x_train, x_test= data_operations.standard_scaler(x_train, x_test)
 
 # Configuring optimizer
 optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_selection_add_prob=0.85, show_info=True, **kwargs)
-fitness_function = lambda *args: fitness_functions.multi_head_fitness(*args)
 
-model = plan.learner(x_train, y_train, optimizer, fitness_function, fit_start=False, gen=2, neurons_history=True) # learner function = TFL(Test Feedback Learning). If test parameters not given then uses Train Feedback. More information: https://github.com/HCB06/pyerualjetwork/blob/main/Welcome_to_PLAN/PLAN.pdf
+model = plan.learner(x_train, y_train, optimizer, fit_start=False, gen=2, neurons_history=True)
 
 test_model = plan.evaluate(x_test, y_test, W=model[model_operations.get_weights()], show_metrics=True, activation_potentiation=model[model_operations.get_act_pot()])
 test_preds = test_model[model_operations.get_preds()]
