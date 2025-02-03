@@ -92,7 +92,7 @@ lr_model = LogisticRegression(max_iter=1000, random_state=42)
 y_train_decoded = data_operations.decode_one_hot(y_train)
 lr_model.fit(x_train, y_train_decoded)
 
-y_test_decoded = plan.decode_one_hot(y_test)
+y_test_decoded = data_operations.decode_one_hot(y_test)
 y_pred_lr = lr_model.predict(x_test)
 test_acc_lr = accuracy_score(y_test_decoded, y_pred_lr)
 print(f"Lojistik Regresyon Test Accuracy: {test_acc_lr:.4f}")
@@ -129,9 +129,6 @@ input_dim = x_train.shape[1]  # Giriş boyutu
 
 model = Sequential()
 model.add(Dense(32, activation='relu', input_dim=input_dim))
-model.add(Dense(64, activation='tanh'))
-model.add(Dense(32, activation='relu'))
-model.add(Dense(64, activation='tanh'))
 model.add(Dense(y_train.shape[1], activation='softmax'))
 
 # Model derlemesi
@@ -139,12 +136,12 @@ model.compile(optimizer=RMSprop(), loss='binary_crossentropy', metrics=['accurac
 
 # Model eğitimi (early stopping ile)
 early_stop = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=10, restore_best_weights=True)
-model.fit(x_train, y_train, epochs=200, batch_size=32, callbacks=[early_stop], verbose=1)
+model.fit(x_train, y_train, epochs=20, batch_size=32, callbacks=[early_stop], verbose=1)
 
 # Test verileri üzerinde modelin performansını değerlendirme
 y_pred_dl = model.predict(x_test)
 y_pred_dl_classes = np.argmax(y_pred_dl, axis=1)  # Tahmin edilen sınıflar
-y_test_decoded_dl = plan.decode_one_hot(y_test)
+y_test_decoded_dl = data_operations.decode_one_hot(y_test)
 print(Fore.BLUE + "------Derin Öğrenme (ANN) Sonuçları------" + Fore.RESET)
 test_acc_dl = accuracy_score(y_test_decoded_dl, y_pred_dl_classes)
 print(f"Derin Öğrenme Test Accuracy: {test_acc_dl:.4f}")
@@ -154,9 +151,9 @@ plot_decision_boundary(x_test, y_test, model=model, feature_indices=[0, 1], mode
 
 # PLAN Modeli
 # Configuring optimizer
-genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, **kwargs)
+genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, **kwargs)
 
-model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=False, batch_size=0.05, gen=20) # learner function = TFL(Test Feedback Learning). If test parameters not given then uses Train Feedback. More information: https://github.com/HCB06/pyerualjetwork/blob/main/Welcome_to_PLAN/PLAN.pdf
+model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=True, batch_size=0.05, gen=50)
 
 W = model[model_operations.get_weights()]
 activation_potentiation = model[model_operations.get_act_pot()]
@@ -165,7 +162,7 @@ test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activati
 test_acc_plan = test_model[model_operations.get_acc()]
 print(Fore.GREEN + "------PLAN Modeli Sonuçları------" + Fore.RESET)
 print(f"PLAN Test Accuracy: {test_acc_plan:.4f}")
-print(classification_report(plan.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
+print(classification_report(data_operations.decode_one_hot(y_test), data_operations.decode_one_hot(test_model[model_operations.get_preds_softmax()])))
 # Karar sınırını görselleştir
 plot_decision_boundary(x_test, y_test, model='PLAN', feature_indices=[0, 1], model_name='PLAN', ax=ax, which_ax1=1, which_ax2=1, W=W, activation_potentiation=activation_potentiation)
 plt.show()
