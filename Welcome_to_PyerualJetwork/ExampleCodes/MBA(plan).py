@@ -1,4 +1,4 @@
-from pyerualjetwork import plan, planeat, data_operations, model_operations, metrics, fitness_functions
+from pyerualjetwork import plan, planeat, data_operations, model_operations, metrics
 import numpy as np
 import pandas as pd
 
@@ -35,12 +35,12 @@ scaler_params, x_train, x_test= data_operations.standard_scaler(x_train, x_test)
 # Configuring optimizer
 optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_selection_add_prob=0.85, show_info=True, **kwargs)
 
-model = plan.learner(x_train, y_train, optimizer, fit_start=False, gen=2, neurons_history=True)
+model = plan.learner(x_train, y_train, optimizer, fit_start=True, target_acc=1, neurons_history=True)
 
 test_model = plan.evaluate(x_test, y_test, W=model[model_operations.get_weights()], activation_potentiation=model[model_operations.get_act_pot()])
 test_preds = test_model[model_operations.get_preds()]
 test_acc = test_model[model_operations.get_acc()]
 
 
-precisison, recall, f1 = metrics.metrics(y_test, test_preds)
+precisison, recall, f1 = metrics.metrics(y_test, data_operations.decode_one_hot(test_preds))
 print('Precision: ', precisison, '\n', 'Recall: ', recall, '\n', 'F1: ', f1)
