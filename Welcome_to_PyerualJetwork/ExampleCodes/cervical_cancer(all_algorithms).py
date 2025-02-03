@@ -7,6 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
 from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 
 df = pd.read_csv('kag_risk_factors_cervical_cancer.csv') # dataset link: https://www.kaggle.com/datasets/loveall/cervical-cancer-risk-classification
 
@@ -98,7 +99,7 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, policy='aggressive', **kwargs)
 
-model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=True, gen=10, batch_size=0.05)
+model = plan.learner(x_train, y_train, genetic_optimizer, gen=10, batch_size=0.05)
 
 test_model = plan.evaluate(x_test, y_test, W=model[model_operations.get_weights()], activation_potentiation=model[model_operations.get_act_pot()])
 train_model = plan.evaluate(x_train, y_train, W=model[model_operations.get_weights()], activation_potentiation=model[model_operations.get_act_pot()])
