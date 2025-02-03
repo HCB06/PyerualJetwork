@@ -33,11 +33,12 @@ scaler_params, x_train, x_test = data_operations.standard_scaler(x_train, x_test
 activation_potentiation = ['tanh']
 
 # Modeli eğitme
-W = plan.fit(x_train, y_train, activation_potentiation=activation_potentiation, LTD=2)
+W = plan.fit(x_train, y_train, activation_potentiation=activation_potentiation)
 
 
 # Modeli test etme
-test_model = plan.evaluate(x_test, y_test, show_metrics=True, W=W, activation_potentiation=activation_potentiation)
+test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation)
+print(f"Test Accuracy: {test_model[model_operations.get_acc()]}")
 
 # Modeli kaydetme
 model_operations.save_model(model_name='breast_cancer',
