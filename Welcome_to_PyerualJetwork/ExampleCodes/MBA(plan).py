@@ -37,7 +37,7 @@ optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_selection_
 
 model = plan.learner(x_train, y_train, optimizer, fit_start=False, gen=2, neurons_history=True)
 
-test_model = plan.evaluate(x_test, y_test, W=model[model_operations.get_weights()], show_metrics=True, activation_potentiation=model[model_operations.get_act_pot()])
+test_model = plan.evaluate(x_test, y_test, W=model[model_operations.get_weights()], activation_potentiation=model[model_operations.get_act_pot()])
 test_preds = test_model[model_operations.get_preds()]
 test_acc = test_model[model_operations.get_acc()]
 
