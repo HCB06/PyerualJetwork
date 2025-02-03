@@ -34,6 +34,7 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 	    'tqdm==4.66.4',
 	    'pandas==2.2.2',
 	    'networkx==3.3',
+	    'seaborn==0.13.2',
 	    'numpy==1.26.4',
 	    'matplotlib==3.9.0',
 	    'colorama==0.4.6',
@@ -41,7 +42,7 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 	    'psutil==6.1.1'
         ]
 
-     matplotlib, networkx (optional).
+     matplotlib, networkx, seaborn (optional).
           
 ##############################
 
