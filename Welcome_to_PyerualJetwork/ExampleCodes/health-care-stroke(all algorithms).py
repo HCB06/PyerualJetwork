@@ -154,4 +154,4 @@ train_acc_plan = train_model[model_operations.get_acc()]
 test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation)
 test_acc_plan = test_model[model_operations.get_acc()]
 print(f"PLAN Test Accuracy: {test_acc_plan:.4f}")
-print(classification_report(data_operations.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
+print(classification_report(data_operations.decode_one_hot(y_test), data_operations.decode_one_hot(test_model[model_operations.get_preds()])))
