@@ -29,22 +29,18 @@ x_test, y_test = data_operations.auto_balancer(x_test, y_test)
 
 scaler_params, x_train, x_test = data_operations.standard_scaler(x_train, x_test)
 
-#activation_potentiation = plan.activation_optimizer(x_train, y_train, x_test, y_test, early_stop=True)
-activation_potentiation = ['tanh']
-
 # Modeli eğitme
-W = plan.fit(x_train, y_train, activation_potentiation=activation_potentiation)
+W = plan.fit(x_train, y_train)
 
 
 # Modeli test etme
-test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation)
+test_model = plan.evaluate(x_test, y_test, W=W)
 print(f"Test Accuracy: {test_model[model_operations.get_acc()]}")
 
 # Modeli kaydetme
 model_operations.save_model(model_name='breast_cancer',
                 test_acc=test_model[model_operations.get_acc()],
                 scaler_params=scaler_params,
-                activation_potentiation=activation_potentiation,
                 W=W)
 
 # Model tahminlerini değerlendirme
