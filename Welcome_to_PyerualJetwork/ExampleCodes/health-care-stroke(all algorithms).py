@@ -127,13 +127,13 @@ model.fit(x_train, y_train, epochs=10, batch_size=32, callbacks=[early_stop], ve
 print(Fore.BLUE + "------Derin Öğrenme (ANN) Sonuçları------" + Fore.RESET)
 y_pred_dl = model.predict(x_train, verbose=0)
 y_pred_dl_classes = np.argmax(y_pred_dl, axis=1)  # Tahmin edilen sınıflar
-y_train_decoded_dl = plan.decode_one_hot(y_train)
+y_train_decoded_dl = data_operations.decode_one_hot(y_train)
 train_acc_dl = accuracy_score(y_train_decoded_dl, y_pred_dl_classes)
 #print(f"Derin Öğrenme Train Accuracy: {train_acc_dl:.4f}")
 
 y_pred_dl = model.predict(x_test, verbose=0)
 y_pred_dl_classes = np.argmax(y_pred_dl, axis=1)  # Tahmin edilen sınıflar
-y_test_decoded_dl = plan.decode_one_hot(y_test)
+y_test_decoded_dl = data_operations.decode_one_hot(y_test)
 test_acc_dl = accuracy_score(y_test_decoded_dl, y_pred_dl_classes)
 print(f"Derin Öğrenme Test Accuracy: {test_acc_dl:.4f}")
 print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
@@ -147,11 +147,11 @@ W = model[model_operations.get_weights()]
 activation_potentiation = model[model_operations.get_act_pot()]
 
 print(Fore.GREEN + "------PLAN Modeli Sonuçları------" + Fore.RESET)
-train_model = plan.evaluate(x_train, y_train, W=W, activation_potentiation=activation_potentiation, loading_bar_status=False)
+train_model = plan.evaluate(x_train, y_train, W=W, activation_potentiation=activation_potentiation)
 train_acc_plan = train_model[model_operations.get_acc()]
 #print(f"PLAN Train Accuracy: {train_acc_plan:.4f}")
 
-test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation, loading_bar_status=False)
+test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation)
 test_acc_plan = test_model[model_operations.get_acc()]
 print(f"PLAN Test Accuracy: {test_acc_plan:.4f}")
-print(classification_report(plan.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
+print(classification_report(data_operations.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
