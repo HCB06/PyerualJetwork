@@ -86,11 +86,8 @@ model = Sequential()
 model.add(Dense(64, input_dim=input_dim, activation='tanh'))  # Giriş katmanı ve ilk gizli katman
 model.add(Dropout(0.5))  # Overfitting'i önlemek için Dropout katmanı
 model.add(Dense(128, activation='tanh'))  # İkinci gizli katman
-
 model.add(Dense(64, activation='tanh'))  # Üçüncü gizli katman
-
 model.add(Dense(128, activation='tanh'))  # Dördüncü gizli katman
-model.add(Dropout(0.5))  # Overfitting'i önlemek için Dropout katmanı
 model.add(Dense(y_train.shape[1], activation='softmax'))  # Çıkış katmanı (softmax)
 
 # Modeli derleme
@@ -118,11 +115,11 @@ model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=True, gen=30
 W = model[model_operations.get_weights()]
 activation_potentiation = model[model_operations.get_act_pot()]
 
-test_model = plan.evaluate(x_test, y_test, show_metrics=True, W=W, activation_potentiation=activation_potentiation)
+test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation)
 
 test_acc_plan = test_model[model_operations.get_acc()]
 print(f"PLAN Test Accuracy: {test_acc_plan:.4f}")
-print(classification_report(data_operations.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
+print(classification_report(data_operations.decode_one_hot(y_test), data_operations.decode_one_hot(test_model[model_operations.get_preds()])))
 
 """
 # MODEL KAYDETME
