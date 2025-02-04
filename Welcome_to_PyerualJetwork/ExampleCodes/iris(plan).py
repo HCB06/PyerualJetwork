@@ -17,9 +17,9 @@ x_train, y_train = data_operations.synthetic_augmentation(x_train, y_train)
 scaler_params, x_train, x_test = data_operations.standard_scaler(x_train, x_test)
 
 # Configuring optimizer
-genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, **kwargs)
+genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, **kwargs)
 
-model = plan.learner(x_train, y_train, optimizer=genetic_optimizer, fit_start=True, gen=50, target_acc=0.96, strategy='accuracy', neural_web_history=True, interval=16.67) # learner function = TFL(Test Feedback Learning). If test parameters not given then uses Train Feedback. More information: https://github.com/HCB06/pyerualjetwork/blob/main/Welcome_to_plan/plan.pdf
+model = plan.learner(x_train, y_train, optimizer=genetic_optimizer, fit_start=True, gen=50, target_acc=0.96, neural_web_history=True, interval=16.67)
 
 W = model[model_operations.get_weights()]
 
@@ -39,7 +39,7 @@ model_operations.save_model(model_name='iris',
                  show_architecture=True,
                  W=W)
 
-precisison, recall, f1 = metrics.metrics(y_test, test_preds)
+precisison, recall, f1 = metrics.metrics(y_test, data_operations.decode_one_hot(test_preds))
 print('Precision: ', precisison, '\n', 'Recall: ', recall, '\n', 'F1: ', f1)
 
 y_test = data_operations.decode_one_hot(y_test)
