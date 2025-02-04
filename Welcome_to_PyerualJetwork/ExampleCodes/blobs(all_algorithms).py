@@ -151,9 +151,9 @@ plot_decision_boundary(x_test, y_test, model=model, feature_indices=[0, 1], mode
 
 # PLAN Modeli
 # Configuring optimizer
-genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, **kwargs)
+genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, **kwargs)
 
-model = plan.learner(x_train, y_train, genetic_optimizer, loss_impact=0, batch_size=0.1, gen=80)
+model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=True, gen=20)
 
 W = model[model_operations.get_weights()]
 activation_potentiation = model[model_operations.get_act_pot()]
