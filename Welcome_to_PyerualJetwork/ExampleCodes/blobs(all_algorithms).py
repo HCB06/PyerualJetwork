@@ -136,7 +136,7 @@ model.compile(optimizer=RMSprop(), loss='binary_crossentropy', metrics=['accurac
 
 # Model eğitimi (early stopping ile)
 early_stop = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=10, restore_best_weights=True)
-model.fit(x_train, y_train, epochs=20, batch_size=32, callbacks=[early_stop], verbose=1)
+model.fit(x_train, y_train, epochs=50, batch_size=32, callbacks=[early_stop], verbose=1)
 
 # Test verileri üzerinde modelin performansını değerlendirme
 y_pred_dl = model.predict(x_test)
@@ -153,7 +153,7 @@ plot_decision_boundary(x_test, y_test, model=model, feature_indices=[0, 1], mode
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, **kwargs)
 
-model = plan.learner(x_train, y_train, genetic_optimizer, batch_size=0.05, gen=50)
+model = plan.learner(x_train, y_train, genetic_optimizer, loss_impact=0, batch_size=0.1, gen=80)
 
 W = model[model_operations.get_weights()]
 activation_potentiation = model[model_operations.get_act_pot()]
