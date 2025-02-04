@@ -39,7 +39,7 @@ W = model[model_operations.get_weights()]
 test_model = plan.evaluate(x_test, y_test,  W=W, activation_potentiation=activation_potentiation)
 train_model = plan.evaluate(x_train, y_train, W=W, activation_potentiation=activation_potentiation)
 
-print(classification_report(plan.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
+print(classification_report(data_operations.decode_one_hot(y_test), data_operations.decode_one_hot(test_model[model_operations.get_preds()])))
 test_acc = test_model[model_operations.get_acc()]
 train_acc = train_model[model_operations.get_acc()]
 
