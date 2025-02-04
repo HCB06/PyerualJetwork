@@ -76,7 +76,7 @@ print(classification_report(y_test_decoded, y_pred_xgb))
 input_dim = x_train.shape[1]  # Giriş boyutu
 
 model = Sequential()
-model.add(Dense(8, input_dim=input_dim, activation='tanh'))  # Giriş katmanı ve ilk gizli katman
+model.add(Dense(16, input_dim=input_dim, activation='tanh'))  # Giriş katmanı ve ilk gizli katman
 model.add(Dense(y_train.shape[1], activation='softmax'))  # Çıkış katmanı (softmax)
 
 # Modeli derleme
@@ -97,9 +97,9 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 
 # PLAN Modeli
 # Configuring optimizer
-genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, policy='aggressive', **kwargs)
+genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, policy='aggressive', **kwargs)
 
-model = plan.learner(x_train, y_train, genetic_optimizer, gen=10, batch_size=0.05)
+model = plan.learner(x_train, y_train, genetic_optimizer, gen=17, batch_size=0.05)
 
 test_model = plan.evaluate(x_test, y_test, W=model[model_operations.get_weights()], activation_potentiation=model[model_operations.get_act_pot()])
 train_model = plan.evaluate(x_train, y_train, W=model[model_operations.get_weights()], activation_potentiation=model[model_operations.get_act_pot()])
@@ -110,4 +110,4 @@ train_acc_plan = train_model[model_operations.get_acc()]
 
 print(f"PLAN Test Accuracy: {test_acc_plan:.4f}")
 print(f"PLAN Train Accuracy: {train_acc_plan:.4f}")
-print(classification_report(data_operations.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
+print(classification_report(data_operations.decode_one_hot(y_test), data_operations.decode_one_hot(test_model[model_operations.get_preds()])))
