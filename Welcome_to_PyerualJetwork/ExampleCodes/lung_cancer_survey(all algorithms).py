@@ -141,18 +141,18 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 # PLAN Modeli
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, **kwargs)
-model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=True, auto_normalization=False,
+model = plan.learner(x_train, y_train, genetic_optimizer, auto_normalization=False,
                      gen=5)
 
 W = model[model_operations.get_weights()]
 activation_potentiation = model[model_operations.get_act_pot()]
 
 print(Fore.GREEN + "------PLAN Modeli Sonuçları------" + Fore.RESET)
-train_model = plan.evaluate(x_train, y_train, W=W, activation_potentiation=activation_potentiation, loading_bar_status=False)
+train_model = plan.evaluate(x_train, y_train, W=W, activation_potentiation=activation_potentiation)
 train_acc_plan = train_model[model_operations.get_acc()]
 #print(f"PLAN Train Accuracy: {train_acc_plan:.4f}")
 
-test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation, loading_bar_status=False)
+test_model = plan.evaluate(x_test, y_test, W=W, activation_potentiation=activation_potentiation)
 test_acc_plan = test_model[model_operations.get_acc()]
 print(f"PLAN Test Accuracy: {test_acc_plan:.4f}")
-print(classification_report(data_operations.decode_one_hot(y_test), test_model[model_operations.get_preds()]))
+print(classification_report(data_operations.decode_one_hot(y_test), data_operations.decode_one_hot(test_model[model_operations.get_preds()])))
