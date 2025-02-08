@@ -1,6 +1,8 @@
 --- UPDATE 4.5 (PyerualJetwork) ---
 * fitness module (wals function) improved
 * Weight mutations are now handled using vectorized operations instead of loops. (More faster)
+  - Old: O(n)
+  - New: O(1)
 
 --- UPDATE 4.4 (PyerualJetwork) ---
 * learner function using for optimization of neuroevolution process WALS(Weighted Accuracy-Loss Score). Formula added to PLAN document: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PLAN/PLAN.pdf
