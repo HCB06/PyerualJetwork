@@ -1,3 +1,6 @@
+--- UPDATE 4.5.1 (PyerualJetwork) ---
+* Docstrings ui improved
+
 --- UPDATE 4.5 (PyerualJetwork) ---
 * fitness module (wals function) improved
 * Weight mutations are now handled using vectorized operations instead of loops. (More faster)
