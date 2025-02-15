@@ -5,7 +5,7 @@ pip install gym[mujoco] mujoco
 
 """
 import gym
-from pyerualjetwork import planeat, activation_functions, model_operations
+from pyerualjetwork import planeat, model_operations, data_operations
 import numpy as np
 
 # Define Genomes
@@ -28,19 +28,21 @@ for generation in range(max_generation):
         if individual == 0:
             env = gym.make('HalfCheetah-v4', render_mode='human')
             state = env.reset()
+            env.model.opt.timestep = 0.003
             state = np.array(state[0])
 
         else:
             env.close()
             env = gym.make('HalfCheetah-v4')
             state = env.reset()
+            env.model.opt.timestep = 0.003
             state = np.array(state[0])
 
         while True:
             # Action Calculation
             action = planeat.evaluate(x_population=state, weights=genome_weights[individual], activation_potentiations=genome_activations[individual])
             
-            action = activation_functions.Softmax(action)
+            action = data_operations.normalization(action, dtype=action.dtype)
             state, reward, done, truncated, _ = env.step(action)
 
             reward_sum += reward
@@ -51,8 +53,8 @@ for generation in range(max_generation):
                 rewards[individual] = reward_sum
                 reward_sum = 0
 
-                break
+                break   
 
-    genome_weights, genome_activations = planeat.evolver(genome_weights, genome_activations, generation, np.array(rewards, dtype=np.float32), show_info=True)
+    genome_weights, genome_activations = planeat.evolver(genome_weights, genome_activations, generation, np.array(rewards, dtype=np.float32), show_info=True, activation_mutate_threshold=4, activation_selection_threshold=4)
 
 model_operations.save_model(model_name='HalfCheetah_v4', model_path='HalfCheetah_v4/', W=genome_weights[0], activation_potentiation=genome_activations[0], show_architecture=True)
