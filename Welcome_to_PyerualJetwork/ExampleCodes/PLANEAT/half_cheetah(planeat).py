@@ -19,7 +19,7 @@ rewards = [0] * population_size
 reward_sum = 0
 
 generation = 0
-max_generation = 15
+max_generation = 50
 
 # Training Loop Starts
 for generation in range(max_generation):
