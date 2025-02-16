@@ -53,8 +53,8 @@ for generation in range(max_generation):
                 rewards[individual] = reward_sum
                 reward_sum = 0
 
-                break   
+                break
 
-    genome_weights, genome_activations = planeat.evolver(genome_weights, genome_activations, generation, np.array(rewards, dtype=np.float32), show_info=True, activation_mutate_threshold=4, activation_selection_threshold=4)
+    genome_weights, genome_activations = planeat.evolver(genome_weights, genome_activations, generation, np.array(rewards, dtype=np.float32), show_info=True, activation_mutate_add_prob=0, activation_selection_add_prob=0)
 
 model_operations.save_model(model_name='HalfCheetah_v4', model_path='HalfCheetah_v4/', W=genome_weights[0], activation_potentiation=genome_activations[0], show_architecture=True)
