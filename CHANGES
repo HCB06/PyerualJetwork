@@ -1,3 +1,7 @@
+--- UPDATE 4.5.3 (PyerualJetwork) ---
+* The default values ​​of 'activation_selection_threshold' and 'activation_mutate_threshold' in the evolver function of all planetat modules have been changed from 2 to 20
+* The new name of the 'x_population' parameter in the evaluate function of all planetat modules is 'Input'
+
 --- UPDATE 4.5.2 (PyerualJetwork) ---
 * Loading bar style changed
 
