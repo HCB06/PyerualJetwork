@@ -45,7 +45,7 @@ while True:
             
             # Aksiyon hesaplama
             output = planeat.evaluate(
-                x_population=np.array(state),
+                Input=np.array(state),
                 weights=genome_weights[i],
                 rl_mode=True,
                 activation_potentiations=genome_activations[i]
