@@ -40,7 +40,7 @@ for generation in range(max_generation):
 
         while True:
             # Action Calculation
-            action = planeat.evaluate(x_population=state, weights=genome_weights[individual], activation_potentiations=genome_activations[individual])
+            action = planeat.evaluate(Input=state, weights=genome_weights[individual], activation_potentiations=genome_activations[individual])
             
             action = data_operations.normalization(action, dtype=action.dtype)
             state, reward, done, truncated, _ = env.step(action)
