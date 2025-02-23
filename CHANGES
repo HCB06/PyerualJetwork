@@ -1,5 +1,5 @@
 --- UPDATE 4.6.1 PLANEAT WITH MLP UPDATE (PyerualJetwork) ---
-* PLANEAT module and model_save modules now train, save and predict for MLP models. (Only in PLANEAT for Reinforcement Learning) It will be explained in the new document: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/PYERUALJETWORK_USER_MANUEL_AND_LEGAL_INFORMATION(EN).pdf
+* PLANEAT module and model_save modules now train, save and predict for MLP models. (Only in PLANEAT for Reinforcement Learning) It will be explained in the next document: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/PYERUALJETWORK_USER_MANUEL_AND_LEGAL_INFORMATION(EN).pdf
 * New parameters of define_genomes function in planeat modules: 'hidden', 'activation_functions', 'neurons'.
 * New parameters of evolver and evaluate functions in planeat modules: 'is_mlp'.
 * New function for all model operations modules: 'get_model_type()'
