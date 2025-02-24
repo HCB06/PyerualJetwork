@@ -283,7 +283,7 @@ def eval_genomes(genomes, config):
     time_stamps_3.append(elapsed_time)
     max_rewards_3.append(gen_best_fitness)
 
-config_path = "config-neat"
+config_path = "config-neat-halfcheetah"
 config = neat.config.Config(
     neat.DefaultGenome,
     neat.DefaultReproduction,
