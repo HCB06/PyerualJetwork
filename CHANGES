@@ -1,3 +1,8 @@
+--- UPDATE 4.6.4 (PyerualJetwork) ---
+* Codes at planeat are optimized.
+* Bug fix in mutation fitness selection.
+* Bug fix in explorer policy for planeat.
+
 --- UPDATE 4.6.3 (PyerualJetwork) ---
 * Bug fix. 
 
