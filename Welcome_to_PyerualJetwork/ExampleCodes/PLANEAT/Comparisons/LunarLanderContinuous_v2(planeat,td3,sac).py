@@ -71,8 +71,7 @@ for generation in range(max_generation):
     # Evrim mekanizmasını çalıştır
     genome_weights, genome_activations = planeat.evolver(
         genome_weights, genome_activations, generation, 
-        np.array(rewards, dtype=np.float32), show_info=True, 
-        activation_mutate_add_prob=0, activation_selection_add_prob=0, is_mlp=True, activation_mutate_prob=0
+        np.array(rewards, dtype=np.float32), show_info=True, is_mlp=True, activation_mutate_prob=0
     )
     max_rewards_1.append(max(rewards))
     
