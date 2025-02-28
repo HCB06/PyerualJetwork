@@ -113,8 +113,8 @@ class Actor(nn.Module):
         self.fc3 = nn.Linear(256, output_dim)
     
     def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
+        x = torch.tanh(self.fc1(x))
+        x = torch.tanh(self.fc2(x))
         return torch.tanh(self.fc3(x))
 
 class Critic(nn.Module):
@@ -131,12 +131,12 @@ class Critic(nn.Module):
     def forward(self, state, action):
         sa = torch.cat([state, action], dim=1)
 
-        q1 = torch.relu(self.fc1(sa))
-        q1 = torch.relu(self.fc2(q1))
+        q1 = torch.tanh(self.fc1(sa))
+        q1 = torch.tanh(self.fc2(q1))
         q1 = self.fc3(q1)
 
-        q2 = torch.relu(self.fc4(sa))
-        q2 = torch.relu(self.fc5(q2))
+        q2 = torch.tanh(self.fc4(sa))
+        q2 = torch.tanh(self.fc5(q2))
         q2 = self.fc6(q2)
 
         return q1, q2
@@ -248,72 +248,6 @@ for episode in range(episodes):
 env.close()
 
 
-
-# --- NEAT: ---
-
-
-
-env = gym.make('Pusher-v4')
-
-state = env.reset(seed=10)[0]
-
-time_stamps_3 = []
-max_rewards_3 = []
-start_time_3 = time.time()
-
-def eval_genomes(genomes, config):
-    global start_time_3, time_stamps_3, max_rewards_3, state
-    
-    current_gen_fitness = []
-    
-    for genome_id, genome in genomes:
-        genome.fitness = 0
-        net = neat.nn.FeedForwardNetwork.create(genome, config)
-        total_reward = 0
-        
-        current_state = state
-        while True:
-
-            action = net.activate(current_state)
-            action = np.array(action, dtype=np.float32)
-            action = data_operations.normalization(action, dtype=action.dtype)
-
-            current_state, reward, done, truncated, _ = env.step(action)
-            total_reward += reward
-            
-            if done or truncated:
-                current_state = env.reset(seed=10)[0]
-                break
-        
-        genome.fitness = total_reward
-        current_gen_fitness.append(total_reward)
-    
-    gen_best_fitness = max(current_gen_fitness)
-    
-    elapsed_time = time.time() - start_time_3
-    time_stamps_3.append(elapsed_time)
-    max_rewards_3.append(gen_best_fitness)
-
-config_path = "config-neat-pusher"
-config = neat.config.Config(
-    neat.DefaultGenome,
-    neat.DefaultReproduction,
-    neat.DefaultSpeciesSet,
-    neat.DefaultStagnation,
-    config_path
-)
-
-population = neat.Population(config)
-population.add_reporter(neat.reporting.StdOutReporter(True))
-
-winner = population.run(eval_genomes, 200)
-
-print("En iyi genomun fitness değeri:", winner.fitness)
-
-env.close()
-
-
-
 # --- SAC: ---
 
 
@@ -335,8 +269,8 @@ class Actor(nn.Module):
         self.log_std_layer = nn.Linear(256, output_dim)
     
     def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
+        x = torch.tanh(self.fc1(x))
+        x = torch.tanh(self.fc2(x))
         mean = self.fc3(x)
         log_std = torch.clamp(self.log_std_layer(x), -20, 2)
         std = torch.exp(log_std)
@@ -374,7 +308,7 @@ class Critic(nn.Module):
             nn.Linear(input_dim + action_dim, 256),
             nn.Tanh(),
             nn.Linear(256, 256),
-            nn.ReLU(),
+            nn.Tanh(),
             nn.Linear(256, 1)
         )
     
@@ -478,7 +412,6 @@ for episode in range(episodes):
 plt.figure(figsize=(10, 5))
 plt.plot(time_stamps_1, max_rewards_1, marker='o', linestyle='-', color='g', label="PLANEAT (3 Hyperparameters Tuned)")
 plt.plot(time_stamps_2, max_rewards_2, marker='o', linestyle='-', color='r', label="TD3 (13 Hyperparameters Tuned)")
-plt.plot(time_stamps_3, max_rewards_3, marker='o', linestyle='-', color='b', label="NEAT (49 Hyperparameters Tuned)")
 plt.plot(time_stamps_4, max_rewards_4, marker='o', linestyle='-', color='y', label="SAC (11 Hyperparameters Tuned)")
 plt.xlabel("Time(seconds) [Lower Better]")
 plt.ylabel("Max Reward [Higher Better]")
