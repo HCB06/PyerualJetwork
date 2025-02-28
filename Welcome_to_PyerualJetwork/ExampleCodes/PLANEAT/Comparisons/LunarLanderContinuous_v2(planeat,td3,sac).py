@@ -401,12 +401,6 @@ for episode in range(episodes):
 
 
 
-
-# --- PPO: ---
-
-
-
-
 plt.figure(figsize=(10, 5))
 plt.plot(time_stamps_1, max_rewards_1, marker='o', linestyle='-', color='g', label="PLANEAT")
 plt.plot(time_stamps_2, max_rewards_2, marker='o', linestyle='-', color='r', label="TD3")
