@@ -1,3 +1,7 @@
+--- UPDATE 4.6.6 DOC UPDATE (PyerualJetwork) ---
+* Parameter bug fix for planeat module.
+* Documentation updated: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/PYERUALJETWORK_USER_MANUEL_AND_LEGAL_INFORMATION(EN).pdf
+
 --- UPDATE 4.6.5 (PyerualJetwork) ---
 * Codes at planeat are optimized.
 * Bug fix in mutation fitness selection.
