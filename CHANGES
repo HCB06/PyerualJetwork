@@ -1,3 +1,6 @@
+--- UPDATE 4.6.7 (PyerualJetwork) ---
+* MLP model load, save bug fixed.
+
 --- UPDATE 4.6.6 DOC UPDATE (PyerualJetwork) ---
 * Parameter bug fix for planeat module.
 * Documentation updated: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/PYERUALJETWORK_USER_MANUEL_AND_LEGAL_INFORMATION(EN).pdf
