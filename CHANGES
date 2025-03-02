@@ -1,5 +1,5 @@
 --- UPDATE 4.6.7 (PyerualJetwork) ---
-* MLP model load, save bug fixed.
+* MLP model save-load bug fixed.
 
 --- UPDATE 4.6.6 DOC UPDATE (PyerualJetwork) ---
 * Parameter bug fix for planeat module.
