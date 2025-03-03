@@ -44,12 +44,12 @@ for generation in range(max_generation):
 
         if individual == 0:
             env = gym.make('LunarLanderContinuous-v2', render_mode='human')
-            state = env.reset()
+            state = env.reset(seed=75)
             state = np.array(state[0])
         else:
             env.close()
             env = gym.make('LunarLanderContinuous-v2')
-            state = env.reset()
+            state = env.reset(seed=75)
             state = np.array(state[0])
 
         while True:
@@ -62,7 +62,7 @@ for generation in range(max_generation):
             reward_sum += reward
 
             if done or truncated:
-                state = env.reset()
+                state = env.reset(seed=75)
                 state = np.array(state[0])
                 rewards[individual] = reward_sum
                 reward_sum = 0
@@ -179,7 +179,7 @@ max_rewards_2 = []
 start_time_2 = time.time()
 
 for episode in range(episodes):
-    state = env.reset()[0]
+    state = env.reset(seed=75)[0]
     total_reward = 0
     step = 0
 
@@ -345,7 +345,7 @@ max_rewards_4 = []
 start_time = time.time()
 
 for episode in range(episodes):
-    state = env.reset()[0]
+    state = env.reset(seed=75)[0]
     total_reward = 0
     step = 0
     while True:
