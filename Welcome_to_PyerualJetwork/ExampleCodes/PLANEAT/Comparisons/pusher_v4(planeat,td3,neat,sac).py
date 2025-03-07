@@ -45,7 +45,7 @@ for generation in range(max_generation):
 
 
         if individual == 0:
-            env = gym.make('Pusher-v4') # add render_mode='human' for see best phenotype per generation.
+            env = gym.make('Pusher-v4') # add render_mode='human' for see best individual per generation.
             state = env.reset(seed=10)
 
             state = np.array(state[0])
