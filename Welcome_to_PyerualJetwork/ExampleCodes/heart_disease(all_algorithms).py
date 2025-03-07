@@ -110,7 +110,7 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 print(Fore.GREEN + "\n------PLAN Modeli Sonuçları------" + Fore.RESET)
 
 genetic_optimizer = lambda *args, **kwargs: planeat.evolver(*args, **kwargs)
-model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=True, gen=30)
+model = plan.learner(x_train, y_train, genetic_optimizer, fit_start=True, gen=100)
 
 W = model[model_operations.get_weights()]
 activation_potentiation = model[model_operations.get_act_pot()]
