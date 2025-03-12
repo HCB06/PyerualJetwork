@@ -1,3 +1,7 @@
+--- UPDATE 4.6.8 (PyerualJetwork) ---
+* Model save glitches fixed.
+* Some CUDA funcitons fixed.
+
 --- UPDATE 4.6.7 (PyerualJetwork) ---
 * MLP model save-load bug fixed.
 
