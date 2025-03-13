@@ -1,3 +1,6 @@
+--- UPDATE 4.7 (PyerualJetwork) ---
+* Bug fix for CUDA load model function.
+
 --- UPDATE 4.6.9 (PyerualJetwork) ---
 * Bug fix for CUDA training.
 
