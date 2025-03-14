@@ -1,5 +1,6 @@
 --- UPDATE 4.7.2 (PyerualJetwork) ---
 * Bug fix for PLAN model training in learner function(gla activation deactivated)
+* IMPORTANT NOTE: "If you have a model that you trained before this version, it may perform poorly in this version and later versions. In such a case, you should load and use the 4.6.7 or 4.6.9 version of the model you have."
 
 --- UPDATE 4.7 (PyerualJetwork) ---
 * Bug fix for CUDA load model function.
