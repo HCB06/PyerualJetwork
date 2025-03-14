@@ -78,7 +78,7 @@ for generation in range(max_generation):
                 if done or truncated or i == 1000:
                     state = env.reset(seed=seed)[0]
                     state = np.array(state[0]).ravel().reshape(1, -1)
-                    rewards[individual] += reward_sum
+                    rewards[individual] = reward_sum
                     reward_sum = 0
                     break
 
