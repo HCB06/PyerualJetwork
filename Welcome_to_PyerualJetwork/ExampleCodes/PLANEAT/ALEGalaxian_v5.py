@@ -1,6 +1,6 @@
 import gym
 import numpy as np
-import planeat_cuda, data_operations_cuda, model_operations_cuda
+from pyerualjetwork import planeat_cuda, data_operations_cuda, model_operations_cuda
 import cupy as cp
 import random
 
