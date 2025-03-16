@@ -49,7 +49,10 @@ for generation in range(max_generation):
                 break
 
     max_rewards_1.append(max(rewards))
-
+    genome_weights, genome_activations = planeat.evolver(
+    genome_weights, genome_activations, generation, 
+    np.array(rewards, dtype=np.float32), show_info=True, is_mlp=True
+    )
 model_operations.save_model(model_name='cita', model_type='MLP', W=genome_weights[0], activation_potentiation=genome_activations[0])
 
 env.close()
