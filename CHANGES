@@ -1,7 +1,8 @@
 --- UPDATE 4.8 FULL SUPPORT FOR MLP MODELS (PyerualJetwork) ---
 * From this version onwards you can train MLP (Multi Layer Perceptron and Deep Learning) models with the 'plan' and 'plan_cuda' modules.
   The innovative ENE (Eugenic NeuroEvolution) in the 'planeat' and 'planeat_cuda' modules will be used as the optimization algorithm.
-* The learner function in the 'plan' and 'plan_cuda' modules has new optional parameters: neurons, hidden, activation_functions
+* The learner function in the 'plan' and 'plan_cuda' modules has new optional parameters: neurons, hidden, activation_functions.
+* Evaluate function in the 'plan' and 'plan_cuda' modules has new optional parameter: is_mlp.
 
 --- UPDATE 4.7.2 (PyerualJetwork) ---
 * Bug fix for PLAN model training in learner function(gla activation deactivated)
