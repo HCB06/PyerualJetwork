@@ -109,7 +109,7 @@ def learn(x_train, y_train, optimizer, fit_start=True, gen=None, batch_size=1, p
 
     Why genetic optimization ENE(Eugenic NeuroEvolution) and not backpropagation?
     Because PLAN is different from other neural network architectures. In PLAN, the learnable parameters are not the weights; instead, the learnable parameters are the activation functions.
-    Since activation functions are not differentiable, we cannot use gradient descent or backpropagation. However, I developed a more powerful genetic optimization algorithm: PLANEAT.
+    Since activation functions are not differentiable, we cannot use gradient descent or backpropagation. However, I developed a more powerful genetic optimization algorithm: ENE.
 
     :Args:
     :param x_train: (array-like): Training input data.
