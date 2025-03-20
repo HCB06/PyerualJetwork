@@ -17,16 +17,22 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 
 	pip install pyerualjetwork
 	
-	from pyerualjetwork import neu
-	from pyerualjetwork import ene
-	from pyerualjetwork import data_operations
-	from pyerualjetwork import model_operations
+	from pyerualjetwork import neu_cpu
+	from pyerualjetwork import ene_cpu
+	from pyerualjetwork import data_operations_cpu
+	from pyerualjetwork import model_operations_cpu
 	
 	from pyerualjetwork import neu_cuda
 	from pyerualjetwork import ene_cuda
 	from pyerualjetwork import data_operations_cuda
 	from pyerualjetwork import model_operations_cuda
 	
+	PyerualJetwork has Issue Solver. This operation provides users ready-to-use functions to identify potential issues
+ 	caused by version incompatibilities in major updates, ensuring users are not affected by such problems. 
+  	PyereualJetwork aims to offer a seamless experience for its users.
+
+	from pyerualjetwork import issue_solver
+
       Optimized for Visual Studio Code
       
       requires=[
@@ -48,7 +54,7 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 
 ABOUT PYERUALJETWORK:
 
-PyereualJetwork is a large wide GPU-accelerated machine learning library in Python designed for professionals and researchers.
+PyereualJetwork is a large, GPU-accelerated machine learning library in Python designed for professionals and researchers.
 It features PLAN, MLP, and Deep Learning training, as well as ENE (Eugenic NeuroEvolution) for genetic optimization, 
 which can also be applied to genetic algorithms or Reinforcement Learning (RL) problems. 
 The library includes functions for data pre-processing, visualizations, model saving and loading, prediction and evaluation, 
