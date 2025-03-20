@@ -11,6 +11,14 @@
 * reverse_predict_model_ram function in model_operations module, name changed to reverse_predict_from_memory.
 * reverse_predict_model_storage function in model_operations module, name changed to reverse_predict_from_storage.
 * get_act_pot function in model_operations module, name changed to get_act.
+* non-cuda modules now pointed with '_cpu' tag. --> This approach was implemented to allow users to easily make bulk changes in their code by searching with Ctrl + F for the _cuda and _cpu tags, facilitating seamless transitions between them.
+* model_save functions now have version column.
+* model_operations module has new functions: 
+  - get_weights_type():
+  - get_weights_format():
+  - get_model_version():
+  - get_model_df():
+* pyerualjetwork has new module: issue_solver. For more information read README.md: https://github.com/HCB06/PyerualJetwork/blob/main/README.md
 
 --- UPDATE 4.8 FULL SUPPORT FOR MLP MODELS (PyerualJetwork) ---
 * From this version onwards you can train MLP (Multi Layer Perceptron and Deep Learning) models with the 'plan' and 'plan_cuda' modules.
