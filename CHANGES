@@ -4,6 +4,7 @@
 * some 'activation_potentiation' parameter name changed to 'activations'.
 * Added detailed doctrings for all main modules & PyerualJetwork root (__init__) file.
 * learner function in plan module (as old name, now neu module) name changed to learn.
+* fit function in plan module (as old name, now neu module) name changed to plan_fit.
 * 'hidden' parameter in learn function & define_genomes function canceled. Now 'hidden' parameter = length of 'neurons' parameter.
 
 --- UPDATE 4.8 FULL SUPPORT FOR MLP MODELS (PyerualJetwork) ---
