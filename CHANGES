@@ -1,7 +1,7 @@
 --- UPDATE 5 (PyerualJetwork) ---
 * 'plan' & 'plan_cuda' module name changed to neu & neu_cuda'.
 * 'planeat' & 'planeat_cuda' module name changed to 'ene' & 'ene_cuda'.
-* some 'activation_potentiation' paramete name changed to 'activations'.
+* some 'activation_potentiation' parameter name changed to 'activations'.
 * Added detailed doctrings for all main modules & PyerualJetwork root (__init__) file.
 
 --- UPDATE 4.8 FULL SUPPORT FOR MLP MODELS (PyerualJetwork) ---
