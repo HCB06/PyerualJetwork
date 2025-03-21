@@ -54,7 +54,7 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 
 ABOUT PYERUALJETWORK:
 
-PyereualJetwork is a large, GPU-accelerated machine learning library in Python designed for professionals and researchers.
+PyereualJetwork is a large wide, GPU-accelerated machine learning library in Python designed for professionals and researchers.
 It features PLAN, MLP, and Deep Learning training, as well as ENE (Eugenic NeuroEvolution) for genetic optimization, 
 which can also be applied to genetic algorithms or Reinforcement Learning (RL) problems. 
 The library includes functions for data pre-processing, visualizations, model saving and loading, prediction and evaluation, 
