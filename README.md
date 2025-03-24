@@ -68,7 +68,7 @@ For example:
 fit function only fits given training data(suitable for dynamic graph) but learner function learns and optimize entire architecture(suitable for static graph). Or more deeper eager executions PyerualJetwork have: feed_forward function, list of activation functions, loss functions. You can create your unique model architecture. Move your data to GPU or CPU or manage how much should in GPU, Its all up to you.
 <br><br>
 
-PyerualJetworket includes PLAN, MLP & ENE.<br>
+PyerualJetworket includes PLAN, MLP, PTNN & ENE.<br>
 
 PLAN VISION:<br>
 
