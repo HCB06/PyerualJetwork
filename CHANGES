@@ -1,3 +1,9 @@
+--- UPDATE 5.1 (PyerualJetwork) ---
+* New model arcihtecture PTNN (Potentiation Transfer Neural Network) added in neu_cpu & neu_cuda modules. --> it will be explain right here: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PLAN/PLAN.pdf
+* Bug fix in mutation function from ene_cuda module.
+* Some model_operations functions now have model_type parameter.
+* model_operations module has new function: get_act_pot (For saving & loading PTNN models).
+
 --- UPDATE 5 (PyerualJetwork) ---
 * 'plan' & 'plan_cuda' module name changed to neu & neu_cuda'.
 * 'planeat' & 'planeat_cuda' module name changed to 'ene' & 'ene_cuda'.
