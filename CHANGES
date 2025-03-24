@@ -3,6 +3,7 @@
 * Bug fix in mutation function from ene_cuda module.
 * Some model_operations functions now have model_type parameter.
 * model_operations module has new function: get_act_pot (For saving & loading PTNN models).
+* From now on gen & pop_size parameter in learn function must be given.
 
 --- UPDATE 5 (PyerualJetwork) ---
 * 'plan' & 'plan_cuda' module name changed to neu & neu_cuda'.
