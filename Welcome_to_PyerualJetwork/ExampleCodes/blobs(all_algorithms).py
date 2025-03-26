@@ -5,7 +5,6 @@ Created on Thu Jun 20 03:55:15 2024
 @author: hasan
 """
 
-import pandas as pd
 import numpy as np
 from colorama import Fore
 from pyerualjetwork.cpu import nn, ene, data_ops, model_ops
