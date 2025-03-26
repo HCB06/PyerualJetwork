@@ -15,17 +15,14 @@ GitHub Page: https://github.com/HCB06/PyerualJetwork
 
 YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7HbsBpCx2VTJ4SK9wcPyse-EHw
 
-	pip install pyerualjetwork
+	installation: 
+	'pip install pyerualjetwork'
 	
-	from pyerualjetwork import neu_cpu
-	from pyerualjetwork import ene_cpu
-	from pyerualjetwork import data_operations_cpu
-	from pyerualjetwork import model_operations_cpu
-	
-	from pyerualjetwork import neu_cuda
-	from pyerualjetwork import ene_cuda
-	from pyerualjetwork import data_operations_cuda
-	from pyerualjetwork import model_operations_cuda
+	package modules:
+	'from pyerualjetwork.cpu import nn, ene, data_ops, model_ops, memory_ops'
+	'from pyerualjetwork.cuda import nn, ene, data_ops, model_ops, memory_ops'
+
+	please read docstrings.
 	
 	PyerualJetwork has Issue Solver. This operation provides users ready-to-use functions to identify potential issues
  	caused by version incompatibilities in major updates, ensuring users are not affected by such problems. 
@@ -54,8 +51,8 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 
 ABOUT PYERUALJETWORK:
 
-PyereualJetwork is a large wide, GPU-accelerated machine learning library in Python designed for professionals and researchers.
-It features PLAN, MLP, and Deep Learning training, as well as ENE (Eugenic NeuroEvolution) for genetic optimization, 
+PyereualJetwork is a large wide GPU-accelerated machine learning library in Python designed for professionals and researchers.
+It features PLAN, MLP Deep Learning and PTNN training, as well as ENE (Eugenic NeuroEvolution) for genetic optimization, 
 which can also be applied to genetic algorithms or Reinforcement Learning (RL) problems. 
 The library includes functions for data pre-processing, visualizations, model saving and loading, prediction and evaluation, 
 training, and both detailed and simplified memory management. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4862342. (THIS ARTICLE IS FIRST VERSION OF PLAN.) MODERN VERSION OF PLAN: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PLAN/PLAN.pdf
@@ -65,7 +62,7 @@ PyerualJetwork is free to use for commercial business and individual users.
 PyerualJetwork ready for both eager execution(like PyTorch) and static graph(like Tensorflow) concepts because PyerualJetwork using only functions.
 For example:
 
-fit function only fits given training data(suitable for dynamic graph) but learner function learns and optimize entire architecture(suitable for static graph). Or more deeper eager executions PyerualJetwork have: feed_forward function, list of activation functions, loss functions. You can create your unique model architecture. Move your data to GPU or CPU or manage how much should in GPU, Its all up to you.
+plan_fit function only fits given training data(suitable for dynamic graph) but learn function learns and optimize entire architecture(suitable for static graph). Or more deeper eager executions PyerualJetwork have: cross_over function, mutation function, list of activation functions, loss functions. You can create your unique model architecture. Move your data to GPU or CPU or manage how much should in GPU, Its all up to you.
 <br><br>
 
 PyerualJetworket includes PLAN, MLP, PTNN & ENE.<br>
@@ -113,6 +110,6 @@ HOW DO I IMPORT IT TO MY PROJECT?
 
 Anaconda users can access the 'Anaconda Prompt' terminal from the Start menu and add the necessary library modules to the Python module search queue by typing "pip install pyerualjetwork" and pressing enter. If you are not using Anaconda, you can simply open the 'cmd' Windows command terminal from the Start menu and type "pip install PyerualJetwork". (Visual Studio Code reccomended) After installation, it's important to periodically open the terminal of the environment you are using and stay up to date by using the command "pip install PyerualJetwork --upgrade".
 
-After installing the module using "pip" you can now call the library module in your project environment. Use: “from pyerualjetwork import neu”. Now, you can call the necessary functions from the neu module.
+After installing the module using "pip" you can now call the library module in your project environment. Use: “from pyerualjetwork.cpu import nn. Now, you can call the necessary functions from the nn module.
 
 The PLAN algorithm & ENE algorithm will not be explained in this document. This document focuses on how professionals can integrate and use PyerualJetwork in their systems. However, briefly, the PLAN algorithm can be described as a classification algorithm. PLAN algorithm achieves this task with an incredibly energy-efficient, fast, and hyperparameter-free user-friendly approach. For more detailed information, you can check out ![PYERUALJETWORK USER MANUEL](https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/PYERUALJETWORK_USER_MANUEL_AND_LEGAL_INFORMATION(EN).pdf) file.
