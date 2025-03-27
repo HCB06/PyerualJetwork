@@ -48,7 +48,7 @@ def plot_decision_boundary(x, y, model, feature_indices=[0, 1], h=0.02, model_na
         
         Z = [None] * len(grid_full)
 
-        Z = np.argmax(model_ops.predict_from_memory(grid_full, W=W, activation_potentiation=activation_potentiation))
+        Z = np.argmax(model_ops.predict_from_memory(grid_full, W=W, activation_potentiation=activation_potentiation), axis=1)
 
         Z = np.array(Z)
         Z = Z.reshape(xx.shape)
