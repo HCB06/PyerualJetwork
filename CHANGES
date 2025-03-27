@@ -1,3 +1,6 @@
+--- UPDATE 5.28 (PyerualJetwork) ---
+* Library architecture changed, please read: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/PYERUALJETWORK_USER_MANUEL_AND_LEGAL_INFORMATION(EN).pdf
+
 --- UPDATE 5.1 (PyerualJetwork) ---
 * New model arcihtecture PTNN (Potentiation Transfer Neural Network) added in neu_cpu & neu_cuda modules. --> it will be explain right here: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PLAN/PLAN.pdf
 * Bug fix in mutation function from ene_cuda module.
