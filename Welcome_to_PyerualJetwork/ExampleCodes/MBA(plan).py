@@ -37,7 +37,7 @@ optimizer = lambda *args, **kwargs: ene.evolver(*args, activation_selection_add_
 
 model = nn.learn(x_train, y_train, optimizer, fit_start=True, target_acc=1, neurons_history=True)
 
-test_model = nn.evaluate(x_test, y_test, W=model[model_ops.get_weights()], activations=model[model_ops.get_act()])
+test_model = nn.evaluate(x_test, y_test, model_type='PLAN', W=model[model_ops.get_weights()], activations=model[model_ops.get_act()])
 test_preds = test_model[model_ops.get_preds()]
 test_acc = test_model[model_ops.get_acc()]
 
