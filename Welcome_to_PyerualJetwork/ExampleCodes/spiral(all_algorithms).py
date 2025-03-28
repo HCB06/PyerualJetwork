@@ -18,7 +18,6 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import RMSprop
 from sklearn.metrics import classification_report, accuracy_score
 from matplotlib import pyplot as plt
-import cupy as cp
 
 fig, ax = plt.subplots(2, 3)  # Create a new figure and axe
 
