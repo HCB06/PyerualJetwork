@@ -10,14 +10,11 @@ import torch.nn.functional as F
 import numpy as np
 import random
 from collections import deque
-import neat
 import tyro
 from torch.distributions.normal import Normal
 from torch.utils.tensorboard import SummaryWriter
 import os
 from dataclasses import dataclass
-
-
 
 # --- ENE: ---
 
@@ -27,7 +24,7 @@ input_shape = 17
 output_shape = 6
 population_size = 50
 
-genome_weights, genome_activations = ene.define_genomes(input_shape, output_shape, population_size)
+genome_weights, genome_activations = ene.define_genomes(input_shape, output_shape, population_size, neurons=[256, 256], activation_functions=['tanh', 'tanh'])
 
 rewards = [0] * population_size
 max_rewards = []
@@ -50,7 +47,7 @@ for generation in range(max_generation):
     for individual in range(population_size):
         while True:
             # Action Calculation
-            action = ene.evaluate(Input=state, weights=genome_weights[individual], activations=genome_activations[individual])
+            action = ene.evaluate(Input=state, is_mlp=True, weights=genome_weights[individual], activations=genome_activations[individual])
             
             action = data_ops.normalization(action, dtype=action.dtype)
             state, reward, done, truncated, _ = env.step(action)
@@ -67,11 +64,12 @@ for generation in range(max_generation):
     # Evrim mekanizmasını çalıştır
     genome_weights, genome_activations = ene.evolver(
         genome_weights, genome_activations, generation, 
-        np.array(rewards, dtype=np.float32), show_info=True, 
-        activation_mutate_add_prob=0, activation_selection_add_prob=0
+        np.array(rewards, dtype=np.float32), show_info=True, is_mlp=True, activation_mutate_prob=0
     )
     max_rewards_1.append(max(rewards))
     
+
+  
     # Geçen süreyi kaydet (saniye cinsinden)
     elapsed_time = time.time() - start_time_1
     time_stamps_1.append(elapsed_time)
@@ -725,7 +723,7 @@ if __name__ == "__main__":
     writer.close()
 
 plt.figure(figsize=(10, 5))
-plt.plot(time_stamps_1, max_rewards_1, marker='o', linestyle='-', color='g', label="ENE (0 Hyperparameters Tuned)")
+plt.plot(time_stamps_1, max_rewards_1, marker='o', linestyle='-', color='g', label="ENE (2 Hyperparameters Tuned)")
 plt.plot(time_stamps_2, max_rewards_2, marker='o', linestyle='-', color='r', label="TD3 (13 Hyperparameters Tuned)")
 plt.plot(time_stamps_4, max_rewards_4, marker='o', linestyle='-', color='y', label="SAC (11 Hyperparameters Tuned)")
 plt.plot(time_stamps_5, max_rewards_5, marker='o', linestyle='-', color='c', label="PPO (17 Hyperparameters Tuned)")
