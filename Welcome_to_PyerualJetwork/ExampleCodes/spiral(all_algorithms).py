@@ -19,6 +19,7 @@ from tensorflow.keras.optimizers import RMSprop
 from sklearn.metrics import classification_report, accuracy_score
 from matplotlib import pyplot as plt
 
+
 fig, ax = plt.subplots(2, 3)  # Create a new figure and axe
 
 # Spiral datasetini oluşturma
@@ -166,8 +167,8 @@ activations = model[model_ops.get_act()]
 
 test_model = nn.evaluate(x_test, y_test, W=W, model_type='MLP', activations=activations)
 test_acc_plan = test_model[model_ops.get_acc()]
-print(Fore.GREEN + "------PLAN Modeli Sonuçları------" + Fore.RESET)
-print(f"PLAN Test Accuracy: {test_acc_plan:.4f}")
+print(Fore.GREEN + "------Derin Öğrenme (ANN) Modeli Sonuçları------" + Fore.RESET)
+print(f"Derin Öğrenme Test Accuracy: {test_acc_plan:.4f}")
 print(classification_report(data_ops.decode_one_hot(y_test), data_ops.decode_one_hot(test_model[model_ops.get_preds_softmax()])))
 # Karar sınırını görselleştir
 plot_decision_boundary(x_test, y_test, model='Deep Learning (PyerualJetwork)', feature_indices=[0, 1], model_name='Deep Learning (PyerualJetwork)', ax=ax, which_ax1=1, which_ax2=1, W=W, activations=activations)
