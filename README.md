@@ -85,13 +85,13 @@ You can create artificial intelligence models that perform natural language proc
 
 ![PLAN VISION](https://github.com/HCB06/PyerualJetwork/blob/main/Media/NLP.gif)
 
-PLANEAT:<br>
+ENE:<br>
 
 You can create artificial intelligence models that perform reinforcement learning tasks and genetic optimization tasks using the ene module:
 
-![PLANEAT](https://github.com/HCB06/PyerualJetwork/blob/main/Media/PLANEAT_1.gif)<br>
-![PLANEAT](https://github.com/HCB06/PyerualJetwork/blob/main/Media/PLANEAT_2.gif)<br>
-![PLANEAT](https://github.com/HCB06/PyerualJetwork/blob/main/Media/mario.gif)<br><br>
+![ENE](https://github.com/HCB06/PyerualJetwork/blob/main/Media/PLANEAT_1.gif)<br>
+![ENE](https://github.com/HCB06/PyerualJetwork/blob/main/Media/PLANEAT_2.gif)<br>
+![ENE](https://github.com/HCB06/PyerualJetwork/blob/main/Media/mario.gif)<br><br>
 
 YOU CAN CREATE DYNAMIC ANIMATIONS OF YOUR MODELS
 
