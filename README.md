@@ -19,8 +19,9 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 	'pip install pyerualjetwork'
 	
 	package modules:
-	'from pyerualjetwork.cpu import nn, ene, data_ops, model_ops, memory_ops'
-	'from pyerualjetwork.cuda import nn, ene, data_ops, model_ops, memory_ops'
+	'from pyerualjetwork import nn, ene, model_ops, memory_ops'
+	'from pyerualjetwork.cpu data_ops'
+	'from pyerualjetwork.cuda data_ops'
 
 	please read docstrings.
 	
