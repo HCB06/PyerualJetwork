@@ -8,7 +8,8 @@ Created on Thu Jun 20 03:55:15 2024
 
 import numpy as np
 from colorama import Fore
-from pyerualjetwork.cpu import model_ops, nn, data_ops, ene
+from pyerualjetwork import ene, model_ops, nn
+from pyerualjetwork.cpu import data_ops
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
@@ -34,7 +35,7 @@ def generate_spiral_data(points, noise=0.8):
 X, y = generate_spiral_data(500)
 
 # Karar sınırı çizimi
-def plot_decision_boundary(x, y, model, feature_indices=[0, 1], h=0.02, model_name='str', ax=None, which_ax1=None, which_ax2=None, W=None, activations=None):
+def plot_decision_boundary(x, y, model, feature_indices=[0, 1], h=0.02, model_name='str', ax=None, which_ax1=None, which_ax2=None):
     """
     Plot decision boundary by focusing on specific feature indices.
     
@@ -56,11 +57,9 @@ def plot_decision_boundary(x, y, model, feature_indices=[0, 1], h=0.02, model_na
     grid_full = np.zeros((grid.shape[0], x.shape[1]), dtype=np.float32)
     grid_full[:, feature_indices] = grid
     
-    if model == 'Deep Learning (PyerualJetwork)':
-        
-        Z = [None] * len(grid_full)
+    if model_name == 'Deep Learning (PyerualJetwork)':
 
-        Z = np.argmax(model_ops.predict_from_memory(grid_full, W=W, model_type='MLP', activations=activations), axis=1)
+        Z = np.argmax(model_ops.predict_from_memory(grid_full, model=model), axis=1)
 
         Z = Z.reshape(xx.shape)
 
@@ -157,19 +156,23 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 plot_decision_boundary(x_test, y_test, model=model, feature_indices=[0, 1], model_name='Deep Learning (Tensorflow)', ax=ax, which_ax1=1, which_ax2=0)
 
 # PyerualJetwok Modeli
+template_model = model_ops.get_model_template()
+
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, strategy='more_selective', **kwargs)
 
-model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=False, pop_size=2000, neurons=[64, 64], activation_functions=['tanh', 'tanh'], gen=100)
+# hint: try 'decision_boundary_history' parameter
+model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=100, batch_size=1, neurons=[64, 64], activation_functions=['tanh', 'tanh'], gen=100)
 
-W = model[model_ops.get_weights()]
-activations = model[model_ops.get_act()]
+model_ops.save_model(model, model_name='spiral', model_path='')
+preds = model_ops.predict_from_storage(x_train, model_name='spiral', model_path='')
 
-test_model = nn.evaluate(x_test, y_test, W=W, model_type='MLP', activations=activations)
-test_acc_plan = test_model[model_ops.get_acc()]
+test_results = nn.evaluate(x_test, y_test, model=model, cuda=True)
+
+test_acc = test_results[model_ops.get_acc()]
 print(Fore.GREEN + "------Derin Öğrenme (ANN) Modeli Sonuçları------" + Fore.RESET)
-print(f"Derin Öğrenme Test Accuracy: {test_acc_plan:.4f}")
-print(classification_report(data_ops.decode_one_hot(y_test), data_ops.decode_one_hot(test_model[model_ops.get_preds_softmax()])))
+print(f"Derin Öğrenme Test Accuracy: {test_acc:.4f}")
+#print(classification_report(data_ops.decode_one_hot(y_test).get(), data_ops.decode_one_hot(test_model[model_ops.get_preds_softmax()]).get()))
 # Karar sınırını görselleştir
-plot_decision_boundary(x_test, y_test, model='Deep Learning (PyerualJetwork)', feature_indices=[0, 1], model_name='Deep Learning (PyerualJetwork)', ax=ax, which_ax1=1, which_ax2=1, W=W, activations=activations)
+plot_decision_boundary(x_test, y_test, model=model, model_name='Deep Learning (PyerualJetwork)', feature_indices=[0, 1], ax=ax, which_ax1=1, which_ax2=1)
 plt.show()
