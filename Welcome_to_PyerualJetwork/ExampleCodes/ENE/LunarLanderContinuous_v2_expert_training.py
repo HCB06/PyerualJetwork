@@ -82,14 +82,12 @@ model_ops.save_model(model_name='lunar_expert_last', model_type='MLP', W=genome_
 """ TESTING IN 100 EPISODE: """
 
 """
-NOTE: If you want test another model use this:
-
+#NOTE: If you want test another model use this:
 
 model = model_ops.load_model(model_name='lunar_expert_gen13', model_path='')
 
-genome_activations = model[model_ops.get_act_pot()]
-genome_weights = model[model_ops.get_weights()]
-
+genome_activations = model.activations
+genome_weights = model.weights
 
 """
 
