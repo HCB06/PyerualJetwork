@@ -18,17 +18,17 @@ x_train, y_train = data_ops.synthetic_augmentation(x_train, y_train)
 scaler_params, x_train, x_test = data_ops.standard_scaler(x_train, x_test)
 
 # Configuring optimizer
-genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, **kwargs)
+genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, strategy='more_selective', **kwargs)
 
 model = nn.learn(x_train, 
                  y_train, 
                  optimizer=genetic_optimizer,
-                 neurons=[32, 32], 
+                 neurons=[16, 16], 
                  activation_functions=['tanh', 'tanh'], 
                  template_model=model_ops.get_model_template(), 
-                 fit_start=False, 
-                 gen=100, 
-                 pop_size=300)
+                 fit_start=False,
+                 gen=50, 
+                 pop_size=500)
 
 test_results = nn.evaluate(x_test, y_test, model, show_report=True)
 
