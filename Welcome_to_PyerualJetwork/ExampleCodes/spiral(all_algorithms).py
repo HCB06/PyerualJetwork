@@ -162,7 +162,7 @@ template_model = model_ops.get_model_template()
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, strategy='more_selective', **kwargs)
 
 # hint: try 'decision_boundary_history' parameter
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=100, batch_size=1, neurons=[64, 64], activation_functions=['tanh', 'tanh'], gen=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=200, batch_size=1, neurons=[64, 64], gen=100)
 
 model_ops.save_model(model, model_name='spiral', model_path='')
 preds = model_ops.predict_from_storage(x_train, model_name='spiral', model_path='')
@@ -171,8 +171,8 @@ test_results = nn.evaluate(x_test, y_test, model, cuda=True)
 
 test_acc = test_results[model_ops.get_acc()]
 print(Fore.GREEN + "------Derin Öğrenme (PyerualJetwork) Modeli Sonuçları------" + Fore.RESET)
-print(f"Derin Öğrenme (PyerualJetwork) Test Accuracy: {test_acc:.4f}")
-#print(classification_report(data_ops.decode_one_hot(y_test).get(), data_ops.decode_one_hot(test_model[model_ops.get_preds_softmax()]).get()))
+print(f"Test Accuracy: {test_acc:.4f}")
+print(classification_report(data_ops.decode_one_hot(y_test), data_ops.decode_one_hot(test_results[model_ops.get_preds_softmax()]).get()))
 # Karar sınırını görselleştir
 plot_decision_boundary(x_test, y_test, model, model_name='Deep Learning (PyerualJetwork)', feature_indices=[0, 1], ax=ax, which_ax1=1, which_ax2=1)
 plt.show()
