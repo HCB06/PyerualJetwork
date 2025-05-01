@@ -68,6 +68,11 @@ plan_fit function only fits given training data(suitable for dynamic graph) but 
 
 PyerualJetworket includes PLAN, MLP, PTNN & ENE.<br>
 
+MLP:<br>
+
+![MLP](https://github.com/HCB06/PyerualJetwork/blob/main/Media/Spirall.gif)
+![MLP](https://github.com/HCB06/PyerualJetwork/blob/main/Media/Spiral.png)
+
 PLAN VISION:<br>
 
 ![PLAN VISION](https://github.com/HCB06/PyerualJetwork/blob/main/Media/PlanVision.jpg)
