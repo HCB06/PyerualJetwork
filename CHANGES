@@ -1,3 +1,11 @@
+--- UPDATE 5.46 (PyerualJetwork) ---
+* Library architecture changed, ene, nn and model_ops modules from cuda folder has been deleted.
+* model_ops module from cpu folder transported to main pyerualjetwork folder.
+* CUDA acceleration now handled a different way. evaluation & prediction functions have new parameter: cuda, for cuda gpu acceleration.
+* Model building entirely changed. You can see example codes in the github page.
+* nn function have new parameter: decision_boundary_history.
+* Detailed graphical report feature for evaluation is back. evaluate function have new parameter: show_report.
+
 --- UPDATE 5.32 (PyerualJetwork) ---
 * Library architecture changed, please read: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/PYERUALJETWORK_USER_MANUEL_AND_LEGAL_INFORMATION(EN).pdf
 
