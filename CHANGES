@@ -1,3 +1,6 @@
+--- UPDATE 5.49 (PyerualJetwork) ---
+* Neural net calculation logic fixed
+
 --- UPDATE 5.46 (PyerualJetwork) ---
 * Library architecture changed, ene, nn and model_ops modules from cuda folder has been deleted.
 * model_ops module from cpu folder transported to main pyerualjetwork folder.
