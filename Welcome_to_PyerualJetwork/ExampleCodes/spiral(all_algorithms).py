@@ -31,12 +31,7 @@ def generate_spiral_data(points, noise=0.8):
     return (np.vstack((np.hstack((d1x,d1y)),np.hstack((-d1x,-d1y)))),
             np.hstack((np.zeros(points),np.ones(points))))
 
-# Spiral veri seti oluşturuluyor
 X, y = generate_spiral_data(500)
-from sklearn.datasets import make_moons
-# Spiral yerine moons veri setini kullan
-#X, y = make_moons(n_samples=1500, noise=0.2, random_state=42)
-# Karar sınırı çizimi
 
 def plot_decision_boundary(x, y, model, feature_indices=[0, 1], h=0.02, model_name='str', ax=None, which_ax1=None, which_ax2=None):
     """
