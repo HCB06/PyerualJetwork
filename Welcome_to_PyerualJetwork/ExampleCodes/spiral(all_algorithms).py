@@ -134,7 +134,6 @@ input_dim = x_train.shape[1]  # Giriş boyutu
 
 model = Sequential()
 model.add(Dense(64, activation='tanh', input_dim=input_dim))
-model.add(Dense(64, activation='tanh'))
 model.add(Dense(y_train.shape[1], activation='softmax'))
 
 # Model derlemesi
@@ -159,13 +158,10 @@ plot_decision_boundary(x_test, y_test, model, feature_indices=[0, 1], model_name
 template_model = model_ops.get_model_template()
 
 # Configuring optimizer
-genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, strategy='more_selective', **kwargs)
+genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
 
 # hint: try 'decision_boundary_history' parameter
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=200, batch_size=1, neurons=[64, 64], gen=100)
-
-model_ops.save_model(model, model_name='spiral', model_path='')
-preds = model_ops.predict_from_storage(x_train, model_name='spiral', model_path='')
+model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=200, neurons=[64], gen=100)
 
 test_results = nn.evaluate(x_test, y_test, model, cuda=True)
 
