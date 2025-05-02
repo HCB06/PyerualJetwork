@@ -33,8 +33,11 @@ def generate_spiral_data(points, noise=0.8):
 
 # Spiral veri seti oluşturuluyor
 X, y = generate_spiral_data(500)
-
+from sklearn.datasets import make_moons
+# Spiral yerine moons veri setini kullan
+#X, y = make_moons(n_samples=1500, noise=0.2, random_state=42)
 # Karar sınırı çizimi
+
 def plot_decision_boundary(x, y, model, feature_indices=[0, 1], h=0.02, model_name='str', ax=None, which_ax1=None, which_ax2=None):
     """
     Plot decision boundary by focusing on specific feature indices.
@@ -90,8 +93,6 @@ y_train, y_test = data_ops.encode_one_hot(y_train, y_test)
 # Veri dengesizliği durumunu otomatik dengeleme
 x_train, y_train = data_ops.auto_balancer(x_train, y_train)
 
-sin = tf.math.sin
-
 # Lojistik Regresyon Modeli
 print(Fore.YELLOW + "------Lojistik Regresyon Sonuçları------" + Fore.RESET)
 lr_model = LogisticRegression(max_iter=1000, random_state=42)
@@ -132,8 +133,9 @@ plot_decision_boundary(x_test, y_test, xgb_model, feature_indices=[0, 1], model_
 
 input_dim = x_train.shape[1]  # Giriş boyutu
 
+sin = tf.math.sin
 model = Sequential()
-model.add(Dense(64, activation='tanh', input_dim=input_dim))
+model.add(Dense(64, activation=sin, input_dim=input_dim))
 model.add(Dense(y_train.shape[1], activation='softmax'))
 
 # Model derlemesi
@@ -161,7 +163,7 @@ template_model = model_ops.get_model_template()
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
 
 # hint: try 'decision_boundary_history' parameter
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=200, neurons=[64], gen=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=500, neurons=[64], gen=100)
 
 test_results = nn.evaluate(x_test, y_test, model, cuda=True)
 
