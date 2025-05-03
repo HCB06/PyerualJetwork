@@ -42,16 +42,14 @@ y_train, y_test = data_ops_cpu.encode_one_hot(y_train, y_test)
 x_train, y_train = data_ops_cpu.synthetic_augmentation(x_train, y_train)
 x_test, y_test = data_ops_cpu.auto_balancer(x_test, y_test)
 
-template_model = model_ops.get_model_template()
 scaler_params, x_train, x_test = data_ops.standard_scaler(x_train, x_test)
-template_model = template_model._replace(scaler_params=scaler_params)
 
 x_test = memory_ops.transfer_to_gpu(x_test)
 y_test = memory_ops.transfer_to_gpu(y_test, dtype=cp.uint8)
 
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, **kwargs)
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model, acc_impact=0, fit_start=True, gen=300, auto_normalization=False)
+model = nn.learn(x_train, y_train, genetic_optimizer, acc_impact=0, fit_start=True, gen=300, auto_normalization=False)
 
 test_results = nn.evaluate(x_test, y_test, model, cuda=True)
 
@@ -59,6 +57,7 @@ test_results = nn.evaluate(x_test, y_test, model, cuda=True)
 test_acc = test_results[model_ops.get_acc()]
 test_preds = test_results[model_ops.get_preds()]
 
+model = model._replace(scaler_params=scaler_params)
 # Modeli kaydetme
 model_ops.save_model(model, model_name='IMDB')
 
