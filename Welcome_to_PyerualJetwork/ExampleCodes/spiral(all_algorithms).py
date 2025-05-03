@@ -157,7 +157,7 @@ plot_decision_boundary(x_test, y_test, model, feature_indices=[0, 1], model_name
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
 
 # hint: try 'decision_boundary_history' parameter
-model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=False, pop_size=500, neurons=[64], gen=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=False, pop_size=40, neurons=[64], gen=300)
 
 test_results = nn.evaluate(x_test, y_test, model, cuda=True)
 
