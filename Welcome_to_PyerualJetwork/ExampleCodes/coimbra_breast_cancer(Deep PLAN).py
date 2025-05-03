@@ -31,7 +31,7 @@ scaler_params, x_train, x_test = data_ops.standard_scaler(x_train, x_test)
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, policy='aggressive', activation_selection_add_prob=0, activation_mutate_add_prob=0, **kwargs)
 
 # Training Process
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model=model_ops.get_model_template(), fit_start=True, gen=60, pop_size=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=True, gen=60, pop_size=100)
 
 # Modeli test etme
 test_results = nn.evaluate(x_test, y_test, model)
