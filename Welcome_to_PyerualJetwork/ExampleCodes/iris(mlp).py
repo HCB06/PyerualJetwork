@@ -23,8 +23,7 @@ genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, strategy='more_se
 model = nn.learn(x_train, 
                  y_train, 
                  optimizer=genetic_optimizer,
-                 neurons=[16, 16], 
-                 template_model=model_ops.get_model_template(), 
+                 neurons=[16, 16],
                  fit_start=False,
                  gen=50, 
                  pop_size=500)
