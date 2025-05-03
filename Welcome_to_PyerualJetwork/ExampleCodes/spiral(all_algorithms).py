@@ -31,6 +31,7 @@ def generate_spiral_data(points, noise=0.8):
     return (np.vstack((np.hstack((d1x,d1y)),np.hstack((-d1x,-d1y)))),
             np.hstack((np.zeros(points),np.ones(points))))
 
+
 X, y = generate_spiral_data(500)
 
 def plot_decision_boundary(x, y, model, feature_indices=[0, 1], h=0.02, model_name='str', ax=None, which_ax1=None, which_ax2=None):
@@ -134,7 +135,7 @@ model.add(Dense(64, activation=sin, input_dim=input_dim))
 model.add(Dense(y_train.shape[1], activation='softmax'))
 
 # Model derlemesi
-model.compile(optimizer=RMSprop(), loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer=RMSprop(), loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Model eğitimi
 early_stop = tf.keras.callbacks.EarlyStopping(monitor='loss', restore_best_weights=True)
@@ -151,14 +152,12 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 # Karar sınırını görselleştir
 plot_decision_boundary(x_test, y_test, model, feature_indices=[0, 1], model_name='Deep Learning (Tensorflow)', ax=ax, which_ax1=1, which_ax2=0)
 
-# PyerualJetwok Modeli
-template_model = model_ops.get_model_template()
 
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
 
 # hint: try 'decision_boundary_history' parameter
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=False, pop_size=500, neurons=[64], gen=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=False, pop_size=500, neurons=[64], gen=100)
 
 test_results = nn.evaluate(x_test, y_test, model, cuda=True)
 
