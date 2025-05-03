@@ -33,8 +33,6 @@ y_train, y_test = data_ops.encode_one_hot(y_train, y_test)
 # Veri dengesizliği durumunu otomatik dengeleme
 x_train, y_train = data_ops.synthetic_augmentation(x_train, y_train)
 
-template_model = model_ops.get_model_template()
-
 scaler_params, x_train, x_test = data_ops.standard_scaler(x_train, x_test)
 
 print('size of training set: %s' % (len(x_train)))
@@ -44,7 +42,7 @@ print('classes: %s' % (newsgroup.target_names))
 
 # PLAN Modeli
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model, fit_start=True, gen=2, neurons_history=True, target_acc=1, pop_size=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=True, gen=2, neurons_history=True, target_acc=1, pop_size=100)
 
 test_model = nn.evaluate(x_test, y_test, show_report=True, model=model)
 
