@@ -111,7 +111,7 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 print(Fore.GREEN + "\n------PLAN Modeli Sonuçları------" + Fore.RESET)
 
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
-model = nn.learn(x_train, y_train, genetic_optimizer, model_ops.get_model_template(), fit_start=True, gen=100, pop_size=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=True, gen=100, pop_size=100)
 
 test_results = nn.evaluate(x_test, y_test, model)
 
