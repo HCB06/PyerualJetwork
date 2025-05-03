@@ -18,6 +18,6 @@ x_train, y_train = data_ops.synthetic_augmentation(x_train, y_train)
 
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
-model = nn.learn(x_train, y_train, genetic_optimizer, model_ops.get_model_template(), fit_start=True, batch_size=0.1, auto_normalization=False, gen=50, pop_size=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=True, batch_size=0.1, auto_normalization=False, gen=50, pop_size=100)
 
 test_model = nn.evaluate(x_test, y_test, model, show_report=True)
