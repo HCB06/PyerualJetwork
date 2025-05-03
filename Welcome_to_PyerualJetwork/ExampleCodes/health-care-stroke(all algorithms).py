@@ -141,7 +141,7 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, strategy='more_selective', show_info=True, **kwargs)
 # neu Modeli
-model = nn.learn(x_train, y_train, genetic_optimizer, model_ops.get_model_template(), fit_start=True, decision_boundary_history=True, auto_normalization=False, batch_size=0.05,
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=True, decision_boundary_history=True, auto_normalization=False, batch_size=0.05,
                      gen=20, pop_size=100)
 
 print(Fore.GREEN + "------PLAN Modeli Sonuçları------" + Fore.RESET)
