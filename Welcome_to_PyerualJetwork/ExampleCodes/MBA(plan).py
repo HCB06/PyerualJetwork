@@ -36,7 +36,7 @@ scaler_params, x_train, x_test= data_ops.standard_scaler(x_train, x_test)
 # Configuring optimizer
 optimizer = lambda *args, **kwargs: ene.evolver(*args, activation_selection_add_prob=0.85, show_info=True, **kwargs)
 
-model = nn.learn(x_train, y_train, optimizer, model_ops.get_model_template(), fit_start=True, target_acc=1, neurons_history=True)
+model = nn.learn(x_train, y_train, optimizer, fit_start=True, target_acc=1, neurons_history=True)
 
 test_results = nn.evaluate(x_test, y_test, model, show_report=True)
 test_preds = test_results[model_ops.get_preds()]
