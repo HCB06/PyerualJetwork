@@ -142,7 +142,7 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 # MLP Modeli
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
-model = nn.learn(x_train, y_train, genetic_optimizer, model_ops.get_model_template(), fit_start=False, neurons=[32], activation_functions=['relu'], auto_normalization=False,
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=False, neurons=[32], activation_functions=['relu'], auto_normalization=False,
                      gen=5, pop_size=100)
 
 
