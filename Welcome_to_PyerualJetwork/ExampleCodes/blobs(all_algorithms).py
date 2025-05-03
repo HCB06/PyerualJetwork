@@ -150,7 +150,7 @@ plot_decision_boundary(x_test, y_test, model, feature_indices=[0, 1], model_name
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, **kwargs)
 
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model=model_ops.get_model_template(), fit_start=True, gen=20, pop_size=100)
+model = nn.learn(x_train, y_train, genetic_optimizer, fit_start=True, gen=20, pop_size=100)
 
 test_results = nn.evaluate(x_test, y_test, model)
 test_acc_plan = test_results[model_ops.get_acc()]
