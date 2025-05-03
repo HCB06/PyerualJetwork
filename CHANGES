@@ -1,5 +1,8 @@
+--- UPDATE 5.52 (PyerualJetwork) ---
+* Monitoring in nn training improved.
+
 --- UPDATE 5.50 (PyerualJetwork) ---
-* Neural net calculation logic fixed
+* Neural net calculation logic fixed.
 
 --- UPDATE 5.46 (PyerualJetwork) ---
 * Library architecture changed, ene, nn and model_ops modules from cuda folder has been deleted.
