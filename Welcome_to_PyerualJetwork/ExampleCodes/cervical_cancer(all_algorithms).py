@@ -100,7 +100,7 @@ print(classification_report(y_test_decoded_dl, y_pred_dl_classes))
 # Configuring optimizer
 genetic_optimizer = lambda *args, **kwargs: ene.evolver(*args, activation_mutate_add_prob=0, activation_selection_add_prob=0, policy='aggressive', **kwargs)
 
-model = nn.learn(x_train, y_train, genetic_optimizer, template_model=model_ops.get_model_template(), gen=17, batch_size=0.05)
+model = nn.learn(x_train, y_train, genetic_optimizer, gen=17, batch_size=0.05)
 
 test_model = nn.evaluate(x_test, y_test, model)
 train_model = nn.evaluate(x_train, y_train, model)
