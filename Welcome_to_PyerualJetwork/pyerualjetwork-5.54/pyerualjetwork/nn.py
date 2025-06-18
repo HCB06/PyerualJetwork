@@ -23,7 +23,7 @@ Currently, 3 types of models can be trained:
     PTNN (Potentiation Transfer Neural Network) -- With non-bias
         * Training Time for Small Projects: fast
         * Training Time for Big Projects: fast
-        * Explainability: low
+        * Explainability: medium
         * Learning Capacity: high
 
 Read learn function docstring for know how to use of these model architectures.
