@@ -1,3 +1,6 @@
+--- UPDATE 5.56 (PyerualJetwork) ---
+* learn function from nn module have parallel training option. Example code added in Example Codes folder.
+
 --- UPDATE 5.52 (PyerualJetwork) ---
 * Monitoring in nn training improved.
 
