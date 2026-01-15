@@ -1,3 +1,7 @@
+--- UPDATE 5.57 (PyerualJetwork) ---
+* visualization module have new function (draw_neural_web_dynamic) example usage --> https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/ExampleCodes/ENE/lunar_lander_continuous(with_animated_neural_web).py
+* predict_from_memory & predict_from_storage functions have new parameter: return_activations. (Returns every layers output with a list)
+
 --- UPDATE 5.56 (PyerualJetwork) ---
 * learn function from nn module have parallel training option. Example code added in Example Codes folder.
 
