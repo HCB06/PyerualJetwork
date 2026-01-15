@@ -6,6 +6,7 @@ import random
 from multiprocessing import Pool, cpu_count
 import matplotlib.pyplot as plt
 import copy
+import numpy as np
 
 # --- evaluate_individual ---
 def evaluate_individual(args):
@@ -42,7 +43,7 @@ def main():
 
     genome_weights, genome_activations = ene.define_genomes(
         input_shape, output_shape, population_size,
-        neurons=[8,8], activation_functions=['tanh','tanh']
+        neurons=[8,8,4,2], activation_functions=['tanh'] * 4
     )
 
     seeds = [random.randint(0, 2**32 - 1) for _ in range(sample_size)]
@@ -51,6 +52,23 @@ def main():
 
     plt.ion()
     fig, (ax_land, ax_neuron) = plt.subplots(1, 2, figsize=(16,6))
+
+    input_labels = [
+        "YatayKonum",          # x_position
+        "DikeyKonum",          # y_position
+        "YatayHız",            # x_velocity
+        "DikeyHız",            # y_velocity
+        "Açı",                  # angle
+        "AçısalHız",           # angular_velocity
+        "SolTemas",      # left_leg_contact
+        "SağTemas",      # right_leg_contact
+    ]
+
+    output_labels = [
+        "Ana Motor",       # main_engine_throttle
+        "Yan Motor",       # side_engine_throttle
+    ]
+
 
     for generation in range(max_generation):
         show_visual_trigger = False
@@ -73,7 +91,7 @@ def main():
             model_ops.build_model(W=best_W_new, activations=best_activations, model_type='MLP'),
             return_activations=True
         )
-        edge_colors_fixed = visualizations.draw_neural_web_dynamic(W_prev, best_W_new, activations_list, ax=ax_neuron, steps=15, edge_colors_fixed=edge_colors_fixed)
+        edge_colors_fixed = visualizations.draw_neural_web_dynamic(W_prev, best_W_new, activations_list, ax=ax_neuron, steps=15, edge_colors_fixed=edge_colors_fixed, input_labels=input_labels, output_labels=output_labels)
 
         # --- En iyi bireyi görselleştir ---
         env = gym.make(env_name, render_mode='rgb_array')
@@ -91,7 +109,7 @@ def main():
             ax_land.axis('off')
             ax_land.set_title("Lunar Lander")
 
-            visualizations.draw_neural_web_dynamic(activations_list=activations_list, ax=ax_neuron, steps=1, edge_colors_fixed=edge_colors_fixed)
+            visualizations.draw_neural_web_dynamic(activations_list=activations_list, ax=ax_neuron, steps=1, edge_colors_fixed=edge_colors_fixed, input_labels=input_labels, output_labels=output_labels)
 
             state, reward, done, truncated, _ = env.step(action)
 
