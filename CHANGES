@@ -1,3 +1,6 @@
+--- UPDATE 5.59 (PyerualJetwork) ---
+* Cupy is now completly optional module. (Mac users now can directly install PyerualJetwork)
+
 --- UPDATE 5.57 & 5.58 (PyerualJetwork) ---
 * visualization module have new function (draw_neural_web_dynamic) example usage --> https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/ExampleCodes/ENE/lunar_lander_continuous(with_animated_neural_web).py
 * predict_from_memory & predict_from_storage functions have new parameter: return_activations. (Returns every layers output with a list)
