@@ -1,3 +1,6 @@
+--- UPDATE 5.60 & 5.61 (PyerualJetwork) ---
+* PLAN & PTNN Parallel training bug solved
+
 --- UPDATE 5.59 (PyerualJetwork) ---
 * Cupy is now completly optional module. (Mac users now can directly install PyerualJetwork)
 
