@@ -52,9 +52,9 @@ YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7Hbs
 
 ABOUT PYERUALJETWORK:
 
-PyereualJetwork is a large wide GPU-accelerated + Parallel Threading Supported machine learning library in Python designed for professionals and researchers.
+PyereualJetwork is a large wide GPU-accelerated + Parallel Threading Supported deep learning library in Python designed for professionals and researchers.
 It features PLAN, MLP Deep Learning and PTNN training, as well as ENE (Eugenic NeuroEvolution) for genetic optimization, 
-which can also be applied to genetic algorithms or Reinforcement Learning (RL) problems. 
+which can also be applied to genetic algorithms or Reinforcement Learning (RL) problems. And >=6 versions have classic deep learning optimizations.
 The library includes functions for data pre-processing, visualizations, model saving and loading, prediction and evaluation, 
 training, and both detailed and simplified memory management. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4862342. (THIS ARTICLE IS FIRST VERSION OF PLAN.) MODERN VERSION OF PLAN: https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PLAN/PLAN.pdf
 Both the PLAN algorithm ENE algorithm and the PyerualJetwork library were created by Author, and all rights are reserved by Author.
