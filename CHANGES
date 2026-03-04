@@ -1,3 +1,6 @@
+--- UPDATE 6 (PyerualJetwork) ---
+* Backprop training support added, read learn function docstring
+
 --- UPDATE 5.60 & 5.61 (PyerualJetwork) ---
 * PLAN & PTNN Parallel training bug solved
 
