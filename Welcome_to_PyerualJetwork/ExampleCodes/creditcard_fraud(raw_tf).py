@@ -34,7 +34,7 @@ model = keras.Sequential([
 ])
 
 model.compile(
-    optimizer="adam",
+    optimizer=keras.optimizers.Adam(learning_rate=0.01),
     loss="categorical_crossentropy",
     metrics=["accuracy"],
 )
@@ -67,3 +67,4 @@ print(f"F1 Score  : {f1:.4f}")
 
 model.save("creditcard_tensorflow_model.keras")
 print("\nModel 'creditcard_tensorflow_model.keras' olarak kaydedildi.")
+
