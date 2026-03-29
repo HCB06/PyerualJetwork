@@ -65,7 +65,7 @@ print("PTNN training starting...")
 
 model = nn.learn(x_train, 
                  y_train, 
-                 iter=[1,20], 
+                 iter=[1,5], 
                  neurons=[64], 
                  activation_functions=['relu'], 
                  backprop_train=True, 
@@ -90,7 +90,7 @@ print("MLP training starting...")
 
 model = nn.learn(x_train, 
                  y_train, 
-                 iter=21, 
+                 iter=20, 
                  neurons=[64], 
                  activation_functions=['relu'], 
                  backprop_train=True, 
