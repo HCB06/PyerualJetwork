@@ -15,6 +15,8 @@ GitHub Page: https://github.com/HCB06/PyerualJetwork
 
 YouTube Tutorials: https://www.youtube.com/watch?v=6wMQstZ00is&list=PLNgNWpM7HbsBpCx2VTJ4SK9wcPyse-EHw
 
+--- Updated Example Training Code --->> https://github.com/HCB06/PyerualJetwork/blob/main/Welcome_to_PyerualJetwork/ExampleCodes/NLPlan/PyerualJetworkExample(PLAN,PTNN,MLP).py
+
 	installation: 
 	'pip install pyerualjetwork'
 	
