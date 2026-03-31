@@ -1,3 +1,6 @@
+--- UPDATE 6.0.7 (PyerualJetwork) ---
+* PLAN trainig bug fixed
+
 --- UPDATE 6 (PyerualJetwork) ---
 * Backprop training support added, read learn function docstring
 
